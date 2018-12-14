@@ -1,0 +1,51 @@
+.dict {
+    background: #00800040;
+    border: green;
+    border-width: 5px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+    min-width: 150px;
+    display: inline-block;
+}
+
+.property {
+    background: #80000040;
+    border: red;
+    border-width: 5px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+    min-width: 150px;
+    display: inline-block;
+}
+
+.string {
+    background: #80800040;
+    border: red;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.array {
+    background: #00008040;
+    border: blue;
+    border-width: 5px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+    min-width: 150px;
+}
+
+#editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 16px;
+    }
