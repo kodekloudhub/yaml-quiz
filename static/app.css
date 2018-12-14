@@ -49,3 +49,11 @@
         left: 0;
         font-size: 16px;
     }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

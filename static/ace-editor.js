@@ -10,7 +10,7 @@ var icon_height = 50;
 var icon_width = 50;
 
 var app = angular.module('myApp', []);
-app.controller('myCtrl', ['$scope', function($scope) {
+app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     $scope.jsonData = {}
     $scope.correct_answer = false;
     $scope.question_state = "primary"
@@ -65,12 +65,13 @@ app.controller('myCtrl', ['$scope', function($scope) {
     $scope.nextQuestion = function(){
         $scope.current_question_number += 1
         $scope.current_question = questions[$scope.current_question_number]
+        $scope.current_question.subText = $sce.trustAsHtml($scope.current_question.subText)
         $scope.correct_answer = false;
         stageQuestion()
         $scope.question_state = "primary"
     }
 
-    $scope.current_question_number = -1
+    $scope.current_question_number = 2
     $scope.nextQuestion()
 
     editor.session.on('change', function(delta) {
@@ -154,39 +155,3 @@ app.directive("box", function() {
     };
 });
 
-var dataToGraph = function(data, start_pos_x, start_pos_y){
-    graph.clear();
-
-    $.each(data, function(i, item){
-        if(typeof(item) == "string"){
-          var image = new joint.shapes.standard.Image();
-          var pos_x = start_pos_x + Math.floor(i/rows)*cell_width;
-          var pos_y = start_pos_y + (i % rows)*cell_height;
-          image.resize(icon_width, icon_height);
-          image.position(pos_x, pos_y);
-          image.attr('root/title', 'joint.shapes.standard.Image');
-          image.attr('label/text', item);
-          image.attr('image/xlinkHref', 'static/images/' + item + '.png');
-          image.addTo(graph);
-        }else if(typeof(item) == "object"){
-             if(Array.isArray(item)){
-                dataToGraph(jsonData, pos_x, pos_y)
-             }else{
-
-             }
-        }
-
-
-    });
-}
-
-//editor.session.on('change', function(delta) {
-//    // delta.start, delta.end, delta.lines, delta.action
-//    console.log("Changed")
-//    console.log(delta)
-//    yamlString = editor.getValue();
-//    jsonData = YAML.parse(yamlString);
-//    console.log(jsonData);
-//    dataToGraph(jsonData, 0, 0)
-//
-//});

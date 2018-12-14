@@ -18,13 +18,16 @@
 
                 <div class="section">
                     <div class="alert alert-{{ question_state }} center" role="alert" style="text-align: center;">
-                      {{ current_question.question }}
+                        <h4>{{ current_question.question }}</h4>
+                        <p ng-bind-html="current_question.subText"></p>
                         <div class="center">
                             <button ng-if="correct_answer" ng-click="nextQuestion()" type="button" class="btn btn-success">Next</button>
                         </div>
                     </div>
                 </div>
                 <box box-item="jsonData"></box>
+
+                {{ jsonData }}
 
             </div>
             <!--<div id="drawing-pad"></div>-->
@@ -53,6 +56,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.5/angular-sanitize.min.js"></script>
     <script src="https://www.jqwidgets.com/public/jqwidgets/jqx-all.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js"></script>
