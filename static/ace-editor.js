@@ -51,6 +51,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     var stageQuestion = function(){
         $scope.silent_change = true
         editor.setValue(YAML.stringify($scope.current_question.stage, 2), 1);
+        updateJsonData()
         $scope.silent_change = false
     }
 
@@ -71,7 +72,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
         $scope.question_state = "primary"
     }
 
-    $scope.current_question_number = 2
+    $scope.current_question_number = -1
     $scope.nextQuestion()
 
     editor.session.on('change', function(delta) {
