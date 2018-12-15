@@ -7,10 +7,10 @@ body {
 }
 
 .dict {
-    background: #00800040;
-    border: green;
-    border-width: 2px;
-    border-style: solid;
+    # background: #00800040;
+    # border: green;
+    # border-width: 2px;
+    # border-style: solid;
     padding: 5px;
     margin: 5px;
     min-width: 150px;
@@ -29,10 +29,10 @@ body {
 }
 
 .string {
-    background: #80800040;
-    border: red;
-    border-width: 1px;
-    border-style: solid;
+    # background: #80800040;
+    # border: red;
+    # border-width: 1px;
+    # border-style: solid;
     padding: 5px;
     margin: 5px;
     min-width: 100px;
@@ -40,13 +40,20 @@ body {
 }
 
 .array {
-    background: #00008040;
-    border: blue;
-    border-width: 2px;
-    border-style: solid;
+    # background: #00008040;
+    # border: blue;
+    # border-width: 2px;
+    # border-style: solid;
     padding: 5px;
     margin: 5px;
     min-width: 150px;
+}
+
+.inblock {
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+
 }
 
 #editor {
@@ -61,4 +68,8 @@ table, th, td {
   padding: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.card {
+    min-width: 150px;
 }

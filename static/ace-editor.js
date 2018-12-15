@@ -94,7 +94,8 @@ app.directive("box", function() {
     return {
         scope: {
             boxItem: "=",
-            parentType: "="
+            parentType: "=",
+            parentName: "="
         },
         link: function(scope, element, attrs) {
             scope.typeOfItem = function(item){
@@ -127,20 +128,21 @@ app.directive("box", function() {
             }
 
         },
-        template : "<div class='animated zoomIn' ng-class=\"{array: typeOfItem(boxItem) == 'array', dict: typeOfItem(boxItem) == 'dictionary', property: typeOfItem(boxItem) == 'properties', string: typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'}\">" +
+        template : "<div class='animated zoomIn card' ng-class=\"{'light-blue lighten-5': typeOfItem(boxItem) == 'array', 'deep-purple lighten-3 inblock': typeOfItem(boxItem) == 'dictionary', 'deep-purple lighten-5 inblock': typeOfItem(boxItem) == 'properties', 'cyan lighten-1 inblock': typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'}\">" +
+                        "<span class='new badge red left' data-badge-caption='' ng-if='parentName' >{{ parentName }}</span>" +
+                        "<span class='new badge blue right' data-badge-caption=''>{{ typeOfItem(boxItem) }}</span>" +
                         "<img ng-if='boxItem.name' src='static/images/{{ boxItem.name }}.png' style='width: 50px; height:50px;'>" +
-                        "<span class='new badge blue pull-right' data-badge-caption='' style='text-align: right;'>{{ typeOfItem(boxItem) }}</span>" +
 //                        "{{ boxItem }}" +
 
-                        "<div ng-if=\"typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'\">" +
+                        "<div class='center-align' ng-if=\"typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'\">" +
                             "<img ng-if='parentType!==\"dictionary\"' src='static/images/{{ boxItem }}.png' style='width: 50px; height:50px;'>" +
-                            "{{ boxItem }}" +
+                            "<p>{{ boxItem }}</p>" +
                         "</div>" +
 
                         "<div ng-if=\"typeOfItem(boxItem) == 'dictionary'\">" +
                             "<div ng-repeat='(key, value) in boxItem track by $index'>" +
-                               "<span class='' data-badge-caption='' >{{ key }}</span>" +
-                               "<box parent-type='typeOfItem(boxItem)' ng-if='value' box-item='value'></box>" +
+//                               "<span class='new badge red left' data-badge-caption='' >{{ key }}</span>" +
+                               "<box parent-name='key' parent-type='typeOfItem(boxItem)' ng-if='value' box-item='value'></box>" +
                             "</div>" +
                         "</div>" +
 
