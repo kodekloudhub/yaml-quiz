@@ -102,7 +102,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
         stageQuestion()
     }
 
-    $scope.current_question_number = 7
+    $scope.current_question_number = -1
     $scope.nextQuestion()
 
     editor.session.on('change', function(delta) {
