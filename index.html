@@ -2,8 +2,10 @@
 <html>
 <head>
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
     <link rel="stylesheet" type="text/css" href="static/app.css" />
 </head>
 <body>
@@ -18,14 +20,32 @@
 
                 <div class="animated card {{ question_state }}">
                     <div class="card-content white-text" role="alert">
-                        <h5>{{ current_question.question }}</h5>
+                        <div class="card-title">{{ current_question.title }}
+                          <button ng-if="!correct_answer" ng-class="{disabled: lastQuestion}"  ng-click="nextQuestion()" type="button" class="waves-effect waves-light btn-floating right"> > </button>
+                          <button ng-if="!correct_answer" ng-class="{disabled: current_question_number < 1}" ng-click="previousQuestion()" type="button" class="waves-effect waves-light btn-floating right"> < </button>
+                        </div>
+
+                        <p ng-bind-html="current_question.question"></p>
                         <p ng-bind-html="current_question.subText"></p>
+
                         <div class="card-action">
                           <button ng-if="correct_answer" ng-click="nextQuestion()" type="button" class="animated zoomIn waves-effect waves-light btn">Next</button>
+
+                            <button ng-if="!correct_answer" ng-click="showSolution()" type="button" class="waves-effect waves-light btn right">Show Solution</button>
+                            <button ng-if="!correct_answer" ng-click="resetAnswer()" type="button" class="waves-effect waves-light btn red right">Reset Answer</button>
+
                         </div>
                     </div>
                 </div>
-                <box box-item="jsonData"></box>
+
+                <div ng-show="!showSolutionFlag" >
+                    <box box-item="jsonData"></box>
+                </div>
+                <div ng-show="showSolutionFlag" id="solutionEditor">
+- apple
+- apple
+- mango
+                </div>
 
                 {{ jsonData }}
 

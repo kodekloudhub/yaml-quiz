@@ -2,6 +2,10 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/yaml");
 
+var solutionEditor = ace.edit("solutionEditor");
+solutionEditor.setTheme("ace/theme/monokai");
+solutionEditor.session.setMode("ace/mode/yaml");
+
 var rows = 9;
 var cell_height = 100;
 var cell_width = 90;
@@ -14,6 +18,8 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     $scope.jsonData = {}
     $scope.correct_answer = false;
     $scope.question_state = "light-blue darken-4"
+    $scope.showSolutionFlag = false;
+    $scope.lastQuestion = false
 
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
@@ -50,7 +56,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
 
     var stageQuestion = function(){
         $scope.silent_change = true
-        editor.setValue(YAML.stringify($scope.current_question.stage, 2), 1);
+        editor.setValue(YAML.stringify($scope.current_question.stage, 10), 1);
         updateJsonData()
         $scope.silent_change = false
     }
@@ -63,16 +69,39 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     }
 
 
-    $scope.nextQuestion = function(){
-        $scope.current_question_number += 1
+    var loadQuestion = function(){
         $scope.current_question = questions[$scope.current_question_number]
+        $scope.current_question.question = $sce.trustAsHtml($scope.current_question.question)
         $scope.current_question.subText = $sce.trustAsHtml($scope.current_question.subText)
         $scope.correct_answer = false;
         stageQuestion()
         $scope.question_state = "light-blue darken-4"
+        if($scope.current_question_number >= (questions.length - 1))$scope.lastQuestion = true
+        else $scope.lastQuestion = false
     }
 
-    $scope.current_question_number = -1
+    $scope.nextQuestion = function(){
+        $scope.current_question_number += 1
+        loadQuestion()
+    }
+
+    $scope.previousQuestion = function(){
+        $scope.current_question_number -= 1
+        loadQuestion()
+    }
+
+    $scope.showSolution = function(){
+        $scope.showSolutionFlag = !$scope.showSolutionFlag
+        if($scope.showSolutionFlag){
+            solutionEditor.setValue(YAML.stringify($scope.current_question.answer, 10), 1);
+        }
+    }
+
+    $scope.resetAnswer = function(){
+        stageQuestion()
+    }
+
+    $scope.current_question_number = 7
     $scope.nextQuestion()
 
     editor.session.on('change', function(delta) {
