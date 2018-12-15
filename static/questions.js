@@ -71,6 +71,6 @@ var questions = [
         "question": "Now try adding the pay information. Remember while <code>address</code> is a dictionary, <code>payslips</code> is an array of <code>month</code> and <code>amount</code>",
         "subText": "<table align='center'>  <tr>  <th>Key/Property</th>    <th>Value</th>  </tr>  <tr>    <td>name</td>    <td>john</td>  </tr> <tr>    <td>gender</td>    <td>male</td>  </tr>  <tr>    <td>age</td>    <td>24</td>  </tr> <tr>    <td>address</td>    <td> ... </td>  </tr> <tr>    <td> payslips </td>    <td> <table align='center'>  <tr> <th>#</th> <th>Month</th>    <th>Amount</th>  </tr>  <tr>    <td>1</td>  <td>June</td>  <td>1400</td>  </tr> <tr>    <td>2</td>  <td>July</td>  <td>2400</td>  </tr> <tr>    <td>3</td>  <td>August</td>  <td>3400</td>  </tr>  </table> </td>  </tr>  </table>",
         "stage": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}}},
-        "answer": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"},"payslips":[{"month":"june","amount":1400},{"month":"july","amount":1400},{"month":"august","amount":1400}]}}
+        "answer": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"},"payslips":[{"month":"june","amount":1400},{"month":"july","amount":2400},{"month":"august","amount":3400}]}}
     }
 ]
