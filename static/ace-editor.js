@@ -5,6 +5,7 @@ editor.session.setMode("ace/mode/yaml");
 var solutionEditor = ace.edit("solutionEditor");
 solutionEditor.setTheme("ace/theme/monokai");
 solutionEditor.session.setMode("ace/mode/yaml");
+solutionEditor.setReadOnly(true);
 
 var rows = 9;
 var cell_height = 100;

@@ -56,19 +56,19 @@ var questions = [
         "title": "List of Dictionary",
         "question": "We would like to record information about multiple employees. Convert the dictionary <code>employee</code> to an array <code>employees</code>.",
         "subText": "",
-        "stage": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}}},
-        "answer": {"employees":[{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}}]}
+        "stage": {"employee":{"name":"john","gender":"male","age":24}},
+        "answer": {"employees":[{"name":"john","gender":"male","age":24}]}
     },
     {
         "title": "List of Dictionary",
         "question": "Add an additional employee to the list using the below information.",
-        "subText": "<table align='center'>  <tr>  <th>Key/Property</th>    <th>Value</th>  </tr>  <tr>    <td>name</td>    <td>sarah</td>  </tr> <tr>    <td>gender</td>    <td>female</td>  </tr>  <tr>    <td>age</td>    <td>28</td>  </tr> <tr>    <td> address </td>    <td> <table align='center'>  <tr>  <th>Key/Property</th>    <th>Value</th>  </tr>  <tr>    <td>city</td>    <td>new york</td>  </tr> <tr>    <td>state</td>    <td>new york</td>  </tr>  <tr>    <td>country</td>    <td>united states</td>  </tr>  </table> </td>  </tr>  </table>",
-        "stage": {"employees":[{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}}]},
-        "answer": {"employees":[{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}},{"name":"sarah","gender":"female","age":28,"address":{"city":"new york","state":"new york","country":"united states"}}]}
+        "subText": "<table align='center'>  <tr>  <th>Key/Property</th>    <th>Value</th>  </tr>  <tr>    <td>name</td>    <td>sarah</td>  </tr> <tr>    <td>gender</td>    <td>female</td>  </tr>  <tr>    <td>age</td>    <td>28</td>  </tr> </table>",
+        "stage": {"employees":[{"name":"john","gender":"male","age":24}]},
+        "answer": {"employees":[{"name":"john","gender":"male","age":24},{"name":"sarah","gender":"female","age":28}]}
     },
     {
         "title": "List of Dictionary in Dictionary",
-        "question": "Now try adding the pay information. Remember pay is an array of <code>month</code> and <code>amount</code>",
+        "question": "Now try adding the pay information. Remember while <code>address</code> is a dictionary, <code>payslips</code> is an array of <code>month</code> and <code>amount</code>",
         "subText": "<table align='center'>  <tr>  <th>Key/Property</th>    <th>Value</th>  </tr>  <tr>    <td>name</td>    <td>john</td>  </tr> <tr>    <td>gender</td>    <td>male</td>  </tr>  <tr>    <td>age</td>    <td>24</td>  </tr> <tr>    <td>address</td>    <td> ... </td>  </tr> <tr>    <td> payslips </td>    <td> <table align='center'>  <tr> <th>#</th> <th>Month</th>    <th>Amount</th>  </tr>  <tr>    <td>1</td>  <td>June</td>  <td>1400</td>  </tr> <tr>    <td>2</td>  <td>July</td>  <td>2400</td>  </tr> <tr>    <td>3</td>  <td>August</td>  <td>3400</td>  </tr>  </table> </td>  </tr>  </table>",
         "stage": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"}}},
         "answer": {"employee":{"name":"john","gender":"male","age":24,"address":{"city":"edison","state":"new jersey","country":"united states"},"payslips":[{"month":"june","amount":1400},{"month":"july","amount":1400},{"month":"august","amount":1400}]}}

@@ -13,12 +13,17 @@
 
     <div class="container">
       <!-- Content here -->
-      <div class="row" style="height: 500px;">
+    <div ng-app="myApp" ng-controller="myCtrl">
+     <div class="row" style="height: 500px;">
         <div class="col s7">
 
-            <div ng-app="myApp" ng-controller="myCtrl">
+                <div ng-show="showSolutionFlag" id="solutionEditor">
+- apple
+- apple
+- mango
+                </div>
 
-                <div class="animated card {{ question_state }}">
+                <div ng-show="!showSolutionFlag" class="animated card {{ question_state }}">
                     <div class="card-content white-text" role="alert">
                         <div class="card-title">{{ current_question.title }}
                           <button ng-if="!correct_answer" ng-class="{disabled: lastQuestion}"  ng-click="nextQuestion()" type="button" class="waves-effect waves-light btn-floating right"> > </button>
@@ -30,26 +35,17 @@
 
                         <div class="card-action">
                           <button ng-if="correct_answer" ng-click="nextQuestion()" type="button" class="animated zoomIn waves-effect waves-light btn">Next</button>
-
-                            <button ng-if="!correct_answer" ng-click="showSolution()" type="button" class="waves-effect waves-light btn right">Show Solution</button>
-                            <button ng-if="!correct_answer" ng-click="resetAnswer()" type="button" class="waves-effect waves-light btn red right">Reset Answer</button>
-
                         </div>
                     </div>
                 </div>
+                <button ng-if="!correct_answer" ng-click="showSolution()" class="waves-effect waves-light btn right"><span ng-if="!showSolutionFlag">Show Solution</span> <span ng-if="showSolutionFlag">Hide Solution</span></button>
 
-                <div ng-show="!showSolutionFlag" >
+                <div >
                     <box box-item="jsonData"></box>
-                </div>
-                <div ng-show="showSolutionFlag" id="solutionEditor">
-- apple
-- apple
-- mango
                 </div>
 
                 {{ jsonData }}
 
-            </div>
             <!--<div id="drawing-pad"></div>-->
         </div>
         <div class="col s5">
@@ -59,9 +55,11 @@
 - apple
 - mango
           </div>
-              <span class="badge">1</span>
+            <button ng-if="!correct_answer" ng-click="resetAnswer()" type="button" class="waves-effect waves-light btn red">Reset Answer</button>
+
 
         </div>
+      </div>
       </div>
 
     </div>
