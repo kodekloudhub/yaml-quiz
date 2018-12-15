@@ -13,7 +13,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     $scope.jsonData = {}
     $scope.correct_answer = false;
-    $scope.question_state = "primary"
+    $scope.question_state = "light-blue darken-4"
 
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
@@ -58,7 +58,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     var checkAnswer = function(){
         if(_.isEqual($scope.jsonData, $scope.current_question.answer)){
             $scope.correct_answer = true;
-            $scope.question_state = "success"
+            $scope.question_state = "teal darken-3"
         }
     }
 
@@ -69,7 +69,7 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
         $scope.current_question.subText = $sce.trustAsHtml($scope.current_question.subText)
         $scope.correct_answer = false;
         stageQuestion()
-        $scope.question_state = "primary"
+        $scope.question_state = "light-blue darken-4"
     }
 
     $scope.current_question_number = -1
@@ -127,9 +127,9 @@ app.directive("box", function() {
             }
 
         },
-        template : "<div ng-class=\"{array: typeOfItem(boxItem) == 'array', dict: typeOfItem(boxItem) == 'dictionary', property: typeOfItem(boxItem) == 'properties', string: typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'}\">" +
+        template : "<div class='animated zoomIn' ng-class=\"{array: typeOfItem(boxItem) == 'array', dict: typeOfItem(boxItem) == 'dictionary', property: typeOfItem(boxItem) == 'properties', string: typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'}\">" +
                         "<img ng-if='boxItem.name' src='static/images/{{ boxItem.name }}.png' style='width: 50px; height:50px;'>" +
-                        "<div class='badge badge-pill badge-primary pull-right' style='text-align: right;'>{{ typeOfItem(boxItem) }}</div>" +
+                        "<span class='new badge blue pull-right' data-badge-caption='' style='text-align: right;'>{{ typeOfItem(boxItem) }}</span>" +
 //                        "{{ boxItem }}" +
 
                         "<div ng-if=\"typeOfItem(boxItem) == 'string' || typeOfItem(boxItem) == 'number'\">" +
@@ -139,7 +139,7 @@ app.directive("box", function() {
 
                         "<div ng-if=\"typeOfItem(boxItem) == 'dictionary'\">" +
                             "<div ng-repeat='(key, value) in boxItem track by $index'>" +
-                               "<div class='badge badge-pill badge-success pull-right' style='text-align: right;'>{{ key }}</div>" +
+                               "<span class='' data-badge-caption='' >{{ key }}</span>" +
                                "<box parent-type='typeOfItem(boxItem)' ng-if='value' box-item='value'></box>" +
                             "</div>" +
                         "</div>" +

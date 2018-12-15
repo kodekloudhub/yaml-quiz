@@ -1,3 +1,11 @@
+body {
+      background-image: url('images/ckad_background-5-min.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+}
+
 .dict {
     background: #00800040;
     border: green;
@@ -42,11 +50,8 @@
 }
 
 #editor {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        height: 500px;
+        width: 800px;
         font-size: 16px;
     }
 
