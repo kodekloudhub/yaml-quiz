@@ -57,14 +57,14 @@ body {
 }
 
 #editor {
-        height: 500px;
-        width: 800px;
+        height: 90vh;
+        width: 42vw;
         font-size: 16px;
     }
 
 #solutionEditor {
-        height: 500px;
-        width: 600px;
+        height: 90vh;
+        width: 42vw;
         font-size: 16px;
     }
 
