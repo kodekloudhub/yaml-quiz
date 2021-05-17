@@ -108,8 +108,6 @@ app.controller('myCtrl', ['$scope', '$sce', function($scope, $sce) {
     editor.session.on('change', function(delta) {
         // delta.start, delta.end, delta.lines, delta.action
         if($scope.silent_change) return
-        console.log("Inside angular")
-        console.log(delta)
         updateJsonData()
         $scope.$apply(function(){
             checkAnswer()
