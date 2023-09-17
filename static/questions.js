@@ -56,7 +56,7 @@ var questions = [
         "title": "List of Dictionary",
         "question": "We would like to record information about multiple employees. Convert the dictionary <code>employee</code> to an array <code>employees</code>.",
         "subText": "",
-        "stage": {"employee":{"name":"john","gender":"male","age":24}},
+        "stage": {"employees":{"name":"john","gender":"male","age":24}},
         "answer": {"employees":[{"name":"john","gender":"male","age":24}]}
     },
     {
